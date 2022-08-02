@@ -39,7 +39,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.2.0"
+        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
     }
     packagingOptions {
         resources {
@@ -49,16 +49,24 @@ android {
 }
 
 dependencies {
-    implementation ("androidx.core:core-ktx:1.8.0")
-    implementation ("androidx.compose.ui:ui:1.2.0")
-    implementation ("androidx.compose.material:material:1.2.0")
-    implementation ("androidx.compose.ui:ui-tooling-preview:1.2.0")
-    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
-    implementation ("androidx.activity:activity-compose:1.5.1")
-    testImplementation ("junit:junit:4.13.2")
-    androidTestImplementation ("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation ("androidx.test.espresso:espresso-core:3.4.0")
-    androidTestImplementation ("androidx.compose.ui:ui-test-junit4:1.2.0")
-    debugImplementation ("androidx.compose.ui:ui-tooling:1.2.0")
-    debugImplementation ("androidx.compose.ui:ui-test-manifest:1.2.0")
+    // android core ----------------------------------------------
+    implementation (libs.androidx.core.core.ktx)
+    implementation (libs.androidx.lifecycle.lifecycle.runtime.ktx)
+    //-------------------------------------------------------------
+
+    //   compose -----------------------------------------------------
+    implementation (libs.androidx.compose.ui)
+    implementation (libs.androidx.compose.ui.tooling.preview)
+    implementation (libs.androidx.compose.material.material)
+    implementation (libs.androidx.activity.activity.compose)
+    androidTestImplementation (libs.androidx.compose.ui.test.junit4)
+    debugImplementation(libs.androidx.compose.ui.tooling)
+    debugImplementation(libs.androidx.compose.ui.test.manifest)
+    //---------------------------------------------------------------
+
+    // junit --------------------------------------------------------
+    testImplementation (libs.junit.junit)
+    androidTestImplementation (libs.androidx.test.junit.ext)
+    androidTestImplementation (libs.androidx.test.espresso.core)
+    // --------------------------------------------------------------
 }
